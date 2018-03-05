@@ -83,8 +83,10 @@ function in_chroot() {
 }
 
 function mount_source_dir() {
-  sudo mkdir ./chroot/root/vaultenv
-  sudo mount --bind ./vaultenv ./chroot/root/vaultenv
+  if ! sudo test -f "./chroot/root/vaultenv/LICENSE"; then
+    sudo mkdir ./chroot/root/vaultenv
+    sudo mount --bind ./vaultenv ./chroot/root/vaultenv
+  fi
 }
 
 case "$1" in
@@ -102,7 +104,7 @@ case "$1" in
 
   shell)
       mount_source_dir
-      in_chroot
+      in_chroot $2
       ;;
 
   package)
