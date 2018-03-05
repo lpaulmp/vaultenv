@@ -4,3 +4,4 @@ vaultenv/.stack-work
 
 # auto-generated files
 vaultenv/vaultenv.cabal
+chroot/
