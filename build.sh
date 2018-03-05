@@ -66,10 +66,9 @@ function remove() {
   sudo umount ./chroot/proc
   sudo umount -R ./chroot/dev
   sudo umount -R ./chroot/sys
-  sudo umount -R ./chroot/root/*
+  sudo umount ./chroot/root/vaultenv
 
-  # TODO: enable after seeing it all work
-  yes n | sudo rm -rfi ./chroot
+  sudo rm -rf ./chroot
 }
 
 function in_chroot() {
@@ -110,7 +109,7 @@ case "$1" in
   package)
       mount_source_dir
       in_chroot "/root/vaultenv/package/build_package.sh"
-      sudo cp ./chroot/root/vaultenv/*.deb .
+      sudo cp ./chroot/root/vaultenv/vaultenv-0.7.0.deb .
       ;;
 
   remove)
