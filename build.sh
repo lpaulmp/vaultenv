@@ -109,7 +109,6 @@ case "$1" in
   package)
       mount_source_dir
       in_chroot "/root/vaultenv/package/build_package.sh"
-      sudo cp ./chroot/root/vaultenv/vaultenv-0.7.0.deb .
       ;;
 
   remove)
